@@ -1,0 +1,7 @@
+seed: 4213
+processed_dir: data/processed
+out_dir: results/ngram
+add_k: 0.01          # unigram add-k, as in the Lecture 3 demo
+grid_step: 0.05      # (l1, l2, l3) grid on the validation split, weights sum to 1
+min_weight: 0.05
+timing_repeats: 3    # median of 3 timed passes after one warm-up

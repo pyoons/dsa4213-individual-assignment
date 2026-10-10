@@ -1,0 +1,29 @@
+seed: 4213
+raw_dir: data/raw              # medical_tc_{train,test,labels}.csv (Schopf et al., 2023)
+processed_dir: data/processed
+glove_path: data/glove/glove-wiki-gigaword-200.gz   # = Stanford glove.6B.200d
+
+# Splitting. The released CSVs list a multi-label abstract once per label, so
+# the same abstract can sit in train AND test. We deduplicate to unique
+# abstracts, keep the official test abstracts as test, drop them from train,
+# and carve a stratified validation set from the remaining train abstracts.
+val_fraction: 0.10
+min_labelset_count: 30         # rarer label combinations are stratified as "multi"
+
+# Tokenisation.
+lowercase: true                # GloVe 6B is uncased
+hyphen_mode: split             # "joined" or "split"; chosen from the coverage check (results/coverage_check.json)
+replace_numbers: true          # pure numbers (12, 0.05, 5,719) -> <num>
+
+# Vocabulary (built on the train split only).
+min_freq: 3
+
+# Language-model blocks.
+block_len: 128                 # inputs per block; targets are the next tokens
+
+# Frequency buckets (train counts of the target word).
+buckets:
+  frequent: 1000               # count >= 1000
+  medium: 50                   # 50 <= count < 1000
+                               # rare: min_freq <= count < 50
+glove_general_topk: 50000      # heuristic: word in GloVe's 50k most frequent -> "general", else "domain"

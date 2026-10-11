@@ -8,8 +8,8 @@ for each way and compares them.
     - includes a built-in check that every token after the first is predicted exactly once.
 
 Usage:
-    python -m src.prepare_data --config configs/data.yaml            # build
-    python -m src.prepare_data --config configs/data.yaml --coverage-check
+    python -m src.data_preparation --config configs/data.yaml            # build
+    python -m src.data_preparation --config configs/data.yaml --coverage-check
     # compare hyphen modes against GloVe first (writes results/coverage_check.json)
 
 Outputs in data/processed/:

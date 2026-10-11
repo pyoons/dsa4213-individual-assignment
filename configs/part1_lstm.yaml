@@ -1,0 +1,30 @@
+# Part I: lstm language model.
+run_name: part1_lstm
+seed: 4213
+processed_dir: data/processed
+out_dir: results
+device: auto                 # cuda > mps > cpu
+deterministic: false         # true = slower but bit-reproducible on GPU
+
+# Identical training procedure for RNN, LSTM and Transformer.
+train:
+  batch_size: 64             # blocks of 128 tokens -> ~8k target tokens per update
+  eval_batch_size: 64
+  max_epochs: 20             # same budget for every neural model
+  patience: 3                # early stopping on validation CE
+  min_delta: 0.001
+  lr: 0.001
+  weight_decay: 0.01
+  warmup_steps: 200          # ~1 epoch (197 steps/epoch)
+  min_lr_ratio: 0.1          # cosine decay to 10% of lr by max_epochs
+  grad_clip: 1.0             # essential for the vanilla RNN
+
+embedding:
+  init: random               # Part I: randomly initialised, trainable
+
+model:
+  type: lstm
+  embedding_dim: 200         # = GloVe 6B 200d; this run is reused as Part II setting 1
+  hidden_size: 256
+  num_layers: 2
+  dropout: 0.3

@@ -87,9 +87,6 @@ def _collapse(frame: pd.DataFrame) -> pd.DataFrame:
     out.columns = ["text", "labels"]
     return out
 
-
-
-
 def make_splits(raw_dir, val_fraction: float, seed: int,
                 min_labelset_count: int = 30):
     """Build leakage-free train/val/test splits of unique abstracts.

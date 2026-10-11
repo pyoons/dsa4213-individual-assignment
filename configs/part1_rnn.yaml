@@ -10,8 +10,8 @@ deterministic: false         # true = slower but bit-reproducible on GPU
 train:
   batch_size: 64             # blocks of 128 tokens -> ~8k target tokens per update
   eval_batch_size: 64
-  max_epochs: 20             # same budget for every neural model
-  patience: 3                # early stopping on validation CE
+  max_epochs: 40             # same budget for every neural model
+  patience: 5                # early stopping on validation CE
   min_delta: 0.001
   lr: 0.001
   weight_decay: 0.01

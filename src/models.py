@@ -26,17 +26,22 @@ from .data import PAD_ID
 
 def make_embedding(vocab_size: int, dim: int, pretrained: np.ndarray | None = None,
                    freeze: bool = False) -> nn.Embedding:
-    """Random trainable embedding (Part I) or a pretrained table (Part II)."""
+    """Random trainable embedding (Part I) or a pretrained table (Part II).
+    
+    For Part II, the random table is created first then overwrites it"""
+    embedding = nn.Embedding(vocab_size, dim, padding_idx=PAD_ID)
     if pretrained is None:
         if freeze:
             raise ValueError("freeze=True requires a pretrained matrix")
-        return nn.Embedding(vocab_size, dim, padding_idx=PAD_ID)
+        return embedding
     weights = torch.as_tensor(pretrained, dtype=torch.float32)
     if weights.shape != (vocab_size, dim):
         raise ValueError(f"pretrained matrix has shape {tuple(weights.shape)}, "
                          f"expected {(vocab_size, dim)}")
-    return nn.Embedding.from_pretrained(weights, freeze=freeze, padding_idx=PAD_ID)
-
+    with torch.no_grad():
+        embedding.weight.copy_(weights)
+    embedding.weight.requires_grad_(not freeze)   # frozen: the whole table stays fixed
+    return embedding
 
 class RecurrentLM(nn.Module):
     """Lecture 3 `WordRecurrentLanguageModel`, extended with depth and dropout."""

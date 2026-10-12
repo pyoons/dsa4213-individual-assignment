@@ -1,0 +1,17 @@
+# Part II step 1: build the two pretrained embedding matrices (frozen in the LM).
+seed: 4213
+processed_dir: data/processed
+glove_path: data/glove/glove-wiki-gigaword-200.gz
+out_dir: data/embeddings          # *_matrix.npy (V x 200) + skipgram.kv
+report_dir: results/part2         # embeddings_report.json
+
+dim: 200                          # = GloVe 6B 200d = LM embedding size
+
+skipgram:                         # gensim Word2Vec, sg=1 (Lecture 2 settings, larger dim)
+  window: 5
+  negative: 5
+  sample: 0.0                     # no frequent-word downsampling, as in Lecture 2
+  epochs: 10                      # corpus is ~13x the Lecture 2 novel; 10 passes suffice
+
+nearest_neighbour_queries:        # inspected in all three tables after training
+  [carcinoma, myocardial, seizures, hepatitis, stroke, culture, positive, discharge, tumor, infarction]

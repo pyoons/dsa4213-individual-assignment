@@ -1,0 +1,17 @@
+# Part II text generation: same prompts and matched decoding as Part I.
+seed: 4213
+processed_dir: data/processed
+out_dir: results/generation_part2
+device: auto
+
+prompt_tokens: 8
+samples_per_prompt: 5
+max_new_tokens: 50
+temperature: 1.0
+top_k: 40
+banned_tokens: ["<pad>", "<eos>"]
+
+models:
+  Random (trainable):   {type: neural, path: results/part1_lstm/best.pt}
+  Skip-gram (frozen):   {type: neural, path: results/part2_lstm_skipgram/best.pt}
+  GloVe (frozen):       {type: neural, path: results/part2_lstm_glove/best.pt}

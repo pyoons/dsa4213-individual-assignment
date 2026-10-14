@@ -70,8 +70,7 @@ def skipgram_corpus(P):
 
 
 def train_skipgram(sentences, cfg):
-    """gensim Word2Vec with sg=1 (Skip-gram, negative sampling), following the
-    Lecture 2 call. Returns (KeyedVectors, training seconds)."""
+    """gensim Word2Vec with sg=1 (Skip-gram, negative sampling). Returns (KeyedVectors, training seconds)."""
     from gensim.models import Word2Vec
 
     with Timer() as t:
@@ -107,7 +106,7 @@ def build_matrix(vocab: D.Vocab, kv, dim: int, seed: int):
     covered[D.PAD_ID] = False
     for i in np.flatnonzero(covered):
         matrix[i] = kv[vocab.itos[i]]
-    sigma = float(matrix[covered].std())
+    sigma = float(matrix[covered].std()) # measure the spread of the real vectors 
     rng = np.random.default_rng(seed)
     missing = ~covered
     missing[D.PAD_ID] = False

@@ -1,0 +1,18 @@
+# Part I text generation: matched decoding for every model.
+seed: 4213
+processed_dir: data/processed
+out_dir: results/generation
+device: auto
+
+prompt_tokens: 8            # first 8 tokens of one single-label test abstract per class
+samples_per_prompt: 5       # metrics average over 5 prompts x 5 samples = 25 samples per model
+max_new_tokens: 50          # every sample has exactly 50 new tokens
+temperature: 1.0
+top_k: 40
+banned_tokens: ["<pad>", "<eos>"]   # keep each sample inside one abstract
+
+models:                     # display name -> artefact (missing ones are skipped)
+  n-gram:      {type: ngram,  path: results/ngram/model.npz}
+  RNN:         {type: neural, path: results/part1_rnn/best.pt}
+  LSTM:        {type: neural, path: results/part1_lstm/best.pt}
+  Transformer: {type: neural, path: results/part1_transformer/best.pt}

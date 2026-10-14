@@ -1,0 +1,68 @@
+{
+  "joined": {
+    "train_tokens": 1574623,
+    "vocab_size": 19092,
+    "val_unk_rate": 0.030138997475485953,
+    "hyphenated_types_in_train": 8679,
+    "hyphenated_tokens_in_train": 26924,
+    "glove_coverage_of_vocab": {
+      "overall": {
+        "types": 19088,
+        "tokens": 1488151,
+        "type_coverage": 0.7482711651299245,
+        "token_coverage": 0.9765044004271072
+      },
+      "frequent": {
+        "types": 154,
+        "tokens": 826945,
+        "type_coverage": 1.0,
+        "token_coverage": 1.0
+      },
+      "medium": {
+        "types": 2672,
+        "tokens": 484120,
+        "type_coverage": 0.9850299401197605,
+        "token_coverage": 0.9934788895315211
+      },
+      "rare": {
+        "types": 16262,
+        "tokens": 177086,
+        "type_coverage": 0.7069856106259993,
+        "token_coverage": 0.8203810577911297
+      }
+    }
+  },
+  "split": {
+    "train_tokens": 1603305,
+    "vocab_size": 17645,
+    "val_unk_rate": 0.02297043641482872,
+    "hyphenated_types_in_train": 0,
+    "hyphenated_tokens_in_train": 0,
+    "glove_coverage_of_vocab": {
+      "overall": {
+        "types": 17641,
+        "tokens": 1517527,
+        "type_coverage": 0.7948528994954934,
+        "token_coverage": 0.9814401984281005
+      },
+      "frequent": {
+        "types": 164,
+        "tokens": 842804,
+        "type_coverage": 1.0,
+        "token_coverage": 1.0
+      },
+      "medium": {
+        "types": 2771,
+        "tokens": 506448,
+        "type_coverage": 0.986647419704078,
+        "token_coverage": 0.9940961362272138
+      },
+      "rare": {
+        "types": 14706,
+        "tokens": 168275,
+        "type_coverage": 0.7564259485924113,
+        "token_coverage": 0.8503937007874016
+      }
+    }
+  }
+}

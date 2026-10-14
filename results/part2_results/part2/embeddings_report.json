@@ -1,0 +1,142 @@
+{
+  "config": {
+    "seed": 4213,
+    "processed_dir": "data/processed",
+    "glove_path": "data/glove/glove-wiki-gigaword-200.gz",
+    "out_dir": "data/embeddings",
+    "report_dir": "results/part2",
+    "dim": 200,
+    "skipgram": {
+      "window": 5,
+      "negative": 5,
+      "sample": 0.0,
+      "epochs": 10
+    },
+    "nearest_neighbour_queries": [
+      "carcinoma",
+      "myocardial",
+      "seizures",
+      "hepatitis",
+      "stroke",
+      "culture",
+      "positive",
+      "discharge",
+      "tumor",
+      "infarction"
+    ]
+  },
+  "hardware": {
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "python": "3.13.15",
+    "processor": "x86_64",
+    "cpu_count": 2,
+    "torch": "2.11.0+cu130",
+    "torch_threads": 1,
+    "device": "Tesla T4"
+  },
+  "skipgram_training": {
+    "seconds": 173.47533446799997,
+    "sentences": 7611,
+    "tokens": 1603305,
+    "vocabulary": 17643,
+    "note": "train split only; single worker thread; CPU"
+  },
+  "glove_load_seconds": 2.7762273449999384,
+  "skipgram": {
+    "covered_types": 17643,
+    "missing_types": 1,
+    "missing_examples": [
+      "<eos>"
+    ],
+    "oov_sigma": 0.18413344025611877,
+    "mean_norm_covered": 2.462620973587036,
+    "mean_norm_missing": 2.4364819526672363,
+    "coverage": {
+      "all words": {
+        "types": 17641,
+        "type_coverage": 1.0,
+        "train_token_coverage": 1.0,
+        "test_target_coverage": 1.0
+      },
+      "frequent": {
+        "types": 164,
+        "type_coverage": 1.0,
+        "train_token_coverage": 1.0,
+        "test_target_coverage": 1.0
+      },
+      "medium": {
+        "types": 2771,
+        "type_coverage": 1.0,
+        "train_token_coverage": 1.0,
+        "test_target_coverage": 1.0
+      },
+      "rare": {
+        "types": 14706,
+        "type_coverage": 1.0,
+        "train_token_coverage": 1.0,
+        "test_target_coverage": 1.0
+      }
+    }
+  },
+  "glove": {
+    "covered_types": 14022,
+    "missing_types": 3622,
+    "missing_examples": [
+      "<unk>",
+      "<eos>",
+      "<num>",
+      "normotensive",
+      "echocardiographic",
+      "transesophageal",
+      "99m",
+      "doxazosin",
+      "electrocardiographic",
+      "ptca",
+      "cirrhotic",
+      "msec",
+      "transluminal",
+      "reoperation",
+      "cytologic",
+      "mumol",
+      "dipyridamole",
+      "stenoses",
+      "preoperatively",
+      "electrophysiologic",
+      "cardioplegic",
+      "valvuloplasty",
+      "nmol",
+      "cardioplegia",
+      "clinicopathologic"
+    ],
+    "oov_sigma": 0.42286744713783264,
+    "mean_norm_covered": 5.922887802124023,
+    "mean_norm_missing": 5.964348793029785,
+    "coverage": {
+      "all words": {
+        "types": 17641,
+        "type_coverage": 0.7948528994954934,
+        "train_token_coverage": 0.9814401984281005,
+        "test_target_coverage": 0.9869421927642269
+      },
+      "frequent": {
+        "types": 164,
+        "type_coverage": 1.0,
+        "train_token_coverage": 1.0,
+        "test_target_coverage": 1.0
+      },
+      "medium": {
+        "types": 2771,
+        "type_coverage": 0.986647419704078,
+        "train_token_coverage": 0.9940961362272138,
+        "test_target_coverage": 0.9944976954989615
+      },
+      "rare": {
+        "types": 14706,
+        "type_coverage": 0.7564259485924113,
+        "train_token_coverage": 0.8503937007874016,
+        "test_target_coverage": 0.8892716000145028
+      }
+    }
+  },
+  "random_init_expected_norm": 14.142135623730951
+}

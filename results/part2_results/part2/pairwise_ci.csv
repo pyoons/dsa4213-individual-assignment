@@ -1,0 +1,4 @@
+model_a,model_b,ce_a_minus_b,ci_low,ci_high,ci_excludes_zero
+Random (trainable),Skip-gram (frozen),0.04882718649757134,0.04587580750954601,0.05174794090019339,True
+Random (trainable),GloVe (frozen),-0.1338446628623391,-0.13682223072552585,-0.13062738069221577,True
+Skip-gram (frozen),GloVe (frozen),-0.18267184935991043,-0.18511270968616717,-0.17997390262897134,True

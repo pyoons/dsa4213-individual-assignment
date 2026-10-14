@@ -1,0 +1,368 @@
+{
+  "config": {
+    "seed": 4213,
+    "processed_dir": "data/processed",
+    "results_dir": "results",
+    "out_dir": "results/part3",
+    "device": "auto",
+    "task": {
+      "label_set": "single"
+    },
+    "features": {
+      "chunk_len": 128,
+      "batch_size": 64
+    },
+    "representations": {
+      "LSTM-Random": {
+        "run": "part1_lstm",
+        "pooling": "mean"
+      },
+      "LSTM-Skip-gram": {
+        "run": "part2_lstm_skipgram",
+        "pooling": "mean"
+      },
+      "LSTM-GloVe": {
+        "run": "part2_lstm_glove",
+        "pooling": "mean"
+      },
+      "Transformer": {
+        "run": "part1_transformer",
+        "pooling": "mean"
+      },
+      "LSTM-Random (last)": {
+        "run": "part1_lstm",
+        "pooling": "last"
+      },
+      "LSTM-GloVe-ft": {
+        "run": "part2_lstm_glove_ft",
+        "pooling": "mean"
+      }
+    },
+    "baseline_tfidf": true,
+    "classifier": {
+      "C_grid": [
+        0.01,
+        0.1,
+        1.0,
+        10.0
+      ],
+      "max_iter": 3000
+    },
+    "analysis": {
+      "n_boot": 1000,
+      "error_examples": 6
+    }
+  },
+  "device": "cuda",
+  "hardware": {
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "python": "3.13.15",
+    "processor": "x86_64",
+    "cpu_count": 2,
+    "torch": "2.11.0+cu130",
+    "torch_threads": 1,
+    "device": "Tesla T4"
+  },
+  "label_names": [
+    "neoplasms",
+    "digestive system diseases",
+    "nervous system diseases",
+    "cardiovascular diseases",
+    "general pathological conditions"
+  ],
+  "task_sizes": {
+    "train": 5946,
+    "val": 661,
+    "test": 1691
+  },
+  "subset_max_docs": null,
+  "results": {
+    "LSTM-Random": {
+      "run": "part1_lstm",
+      "pooling": "mean",
+      "extraction_seconds": 5.890397191999966,
+      "lm_test_ppl": 92.55159082810341,
+      "C": 1.0,
+      "C_grid": [
+        {
+          "C": 0.01,
+          "val_macro_f1": 0.45360481382342605
+        },
+        {
+          "C": 0.1,
+          "val_macro_f1": 0.5071832685847706
+        },
+        {
+          "C": 1.0,
+          "val_macro_f1": 0.5162457387926354
+        },
+        {
+          "C": 10.0,
+          "val_macro_f1": 0.5130886964188328
+        }
+      ],
+      "val": {
+        "macro_f1": 0.5162457387926354,
+        "accuracy": 0.5915279878971256,
+        "per_class_f1": [
+          0.735632183908046,
+          0.1686746987951807,
+          0.4217687074829932,
+          0.7597402597402597,
+          0.4954128440366973
+        ]
+      },
+      "test": {
+        "macro_f1": 0.4979473121557474,
+        "accuracy": 0.5612063867534004,
+        "per_class_f1": [
+          0.7058823529411765,
+          0.2631578947368421,
+          0.35327635327635326,
+          0.6887254901960784,
+          0.4786944696282865
+        ]
+      },
+      "feature_dim": 256
+    },
+    "LSTM-Skip-gram": {
+      "run": "part2_lstm_skipgram",
+      "pooling": "mean",
+      "extraction_seconds": 5.0856031030000395,
+      "lm_test_ppl": 88.14111030504343,
+      "C": 10.0,
+      "C_grid": [
+        {
+          "C": 0.01,
+          "val_macro_f1": 0.6179899139025146
+        },
+        {
+          "C": 0.1,
+          "val_macro_f1": 0.6253755768694982
+        },
+        {
+          "C": 1.0,
+          "val_macro_f1": 0.6345885625087232
+        },
+        {
+          "C": 10.0,
+          "val_macro_f1": 0.6403135510644358
+        }
+      ],
+      "val": {
+        "macro_f1": 0.6403135510644358,
+        "accuracy": 0.6838124054462935,
+        "per_class_f1": [
+          0.8248587570621468,
+          0.49523809523809526,
+          0.4868421052631579,
+          0.8025889967637541,
+          0.5920398009950248
+        ]
+      },
+      "test": {
+        "macro_f1": 0.6358051063074524,
+        "accuracy": 0.6717918391484329,
+        "per_class_f1": [
+          0.806378132118451,
+          0.4714828897338403,
+          0.5513784461152882,
+          0.7872860635696821,
+          0.5625
+        ]
+      },
+      "feature_dim": 256
+    },
+    "LSTM-GloVe": {
+      "run": "part2_lstm_glove",
+      "pooling": "mean",
+      "extraction_seconds": 5.259803061000014,
+      "lm_test_ppl": 105.80645797333052,
+      "C": 10.0,
+      "C_grid": [
+        {
+          "C": 0.01,
+          "val_macro_f1": 0.5608947279859653
+        },
+        {
+          "C": 0.1,
+          "val_macro_f1": 0.5884298514180297
+        },
+        {
+          "C": 1.0,
+          "val_macro_f1": 0.5905582472223339
+        },
+        {
+          "C": 10.0,
+          "val_macro_f1": 0.5919193467901459
+        }
+      ],
+      "val": {
+        "macro_f1": 0.5919193467901459,
+        "accuracy": 0.6505295007564297,
+        "per_class_f1": [
+          0.8135593220338984,
+          0.3333333333333333,
+          0.5098039215686274,
+          0.7592592592592593,
+          0.543640897755611
+        ]
+      },
+      "test": {
+        "macro_f1": 0.5989037461244131,
+        "accuracy": 0.6487285629804849,
+        "per_class_f1": [
+          0.8,
+          0.38333333333333336,
+          0.5167464114832536,
+          0.7784431137724551,
+          0.5159958720330238
+        ]
+      },
+      "feature_dim": 256
+    },
+    "Transformer": {
+      "run": "part1_transformer",
+      "pooling": "mean",
+      "extraction_seconds": 4.49920788299994,
+      "lm_test_ppl": 90.78792799993394,
+      "C": 0.01,
+      "C_grid": [
+        {
+          "C": 0.01,
+          "val_macro_f1": 0.676243032329989
+        },
+        {
+          "C": 0.1,
+          "val_macro_f1": 0.6669287101969994
+        },
+        {
+          "C": 1.0,
+          "val_macro_f1": 0.662268766402413
+        },
+        {
+          "C": 10.0,
+          "val_macro_f1": 0.6662755524388471
+        }
+      ],
+      "val": {
+        "macro_f1": 0.676243032329989,
+        "accuracy": 0.708018154311649,
+        "per_class_f1": [
+          0.8333333333333334,
+          0.6153846153846154,
+          0.4927536231884058,
+          0.8397435897435898,
+          0.6
+        ]
+      },
+      "test": {
+        "macro_f1": 0.6583036210299319,
+        "accuracy": 0.693672383205204,
+        "per_class_f1": [
+          0.8314350797266514,
+          0.5043478260869565,
+          0.5684754521963824,
+          0.8009888751545118,
+          0.5862708719851577
+        ]
+      },
+      "feature_dim": 200
+    },
+    "LSTM-Random (last)": {
+      "run": "part1_lstm",
+      "pooling": "last",
+      "extraction_seconds": 6.091564396999956,
+      "lm_test_ppl": 92.55159082810341,
+      "C": 1.0,
+      "C_grid": [
+        {
+          "C": 0.01,
+          "val_macro_f1": 0.3401379780516528
+        },
+        {
+          "C": 0.1,
+          "val_macro_f1": 0.36119182439342945
+        },
+        {
+          "C": 1.0,
+          "val_macro_f1": 0.3774283720238586
+        },
+        {
+          "C": 10.0,
+          "val_macro_f1": 0.374557795924241
+        }
+      ],
+      "val": {
+        "macro_f1": 0.3774283720238586,
+        "accuracy": 0.4795763993948563,
+        "per_class_f1": [
+          0.6030927835051546,
+          0.08450704225352113,
+          0.18032786885245902,
+          0.6242774566473989,
+          0.3949367088607595
+        ]
+      },
+      "test": {
+        "macro_f1": 0.3316304990796838,
+        "accuracy": 0.42992312241277353,
+        "per_class_f1": [
+          0.5536945812807882,
+          0.056818181818181816,
+          0.12698412698412698,
+          0.5801886792452831,
+          0.3404669260700389
+        ]
+      },
+      "feature_dim": 256
+    },
+    "TF-IDF (no LM)": {
+      "run": null,
+      "pooling": "tf-idf",
+      "lm_test_ppl": null,
+      "C": 10.0,
+      "C_grid": [
+        {
+          "C": 0.01,
+          "val_macro_f1": 0.33101915411554134
+        },
+        {
+          "C": 0.1,
+          "val_macro_f1": 0.4742084054105885
+        },
+        {
+          "C": 1.0,
+          "val_macro_f1": 0.7439172608602286
+        },
+        {
+          "C": 10.0,
+          "val_macro_f1": 0.799108528613479
+        }
+      ],
+      "val": {
+        "macro_f1": 0.799108528613479,
+        "accuracy": 0.8048411497730711,
+        "per_class_f1": [
+          0.8857142857142857,
+          0.8514851485148515,
+          0.6621621621621622,
+          0.858085808580858,
+          0.7380952380952381
+        ]
+      },
+      "test": {
+        "macro_f1": 0.7801959035696682,
+        "accuracy": 0.7882909520993495,
+        "per_class_f1": [
+          0.8655367231638418,
+          0.7729083665338645,
+          0.6985645933014354,
+          0.8535980148883374,
+          0.7103718199608611
+        ]
+      },
+      "feature_dim": 14503
+    }
+  }
+}

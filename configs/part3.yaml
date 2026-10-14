@@ -1,0 +1,33 @@
+# Part III: downstream disease-category classification with frozen LM representations.
+seed: 4213
+processed_dir: data/processed
+results_dir: results
+out_dir: results/part3
+device: auto
+
+task:
+  label_set: single         # only abstracts with exactly one condition label (5 classes)
+  # train 5,946 / val 661 / test 1,691 abstracts; the same splits as the LMs, so no
+  # test abstract was seen by any LM, embedding or classifier during training.
+
+features:
+  chunk_len: 128            # = LM block length; longer abstracts are split into chunks
+  batch_size: 64
+
+representations:            # name -> frozen LM run + pooling (missing runs are skipped)
+  LSTM-Random:        {run: part1_lstm,          pooling: mean}
+  LSTM-Skip-gram:     {run: part2_lstm_skipgram, pooling: mean}
+  LSTM-GloVe:         {run: part2_lstm_glove,    pooling: mean}
+  Transformer:        {run: part1_transformer,   pooling: mean}
+  LSTM-Random (last): {run: part1_lstm,          pooling: last}   # pooling comparison
+  LSTM-GloVe-ft:      {run: part2_lstm_glove_ft, pooling: mean}   # only if the optional run exists
+
+baseline_tfidf: true        # reference point that uses no language model
+
+classifier:                 # identical for every representation
+  C_grid: [0.01, 0.1, 1.0, 10.0]   # chosen by validation macro-F1
+  max_iter: 3000
+
+analysis:
+  n_boot: 1000              # bootstrap resamples of test abstracts for macro-F1 CIs
+  error_examples: 6         # misclassified abstracts shown in the error analysis

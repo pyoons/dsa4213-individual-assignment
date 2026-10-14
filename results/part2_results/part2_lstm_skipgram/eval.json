@@ -1,0 +1,79 @@
+{
+  "run_name": "part2_lstm_skipgram",
+  "model_cfg": {
+    "type": "lstm",
+    "embedding_dim": 200,
+    "hidden_size": 256,
+    "num_layers": 2,
+    "dropout": 0.3
+  },
+  "best_epoch": 39,
+  "val_ce": 4.496219635009766,
+  "val_ppl": 89.67747610364495,
+  "test_ce": 4.478939056396484,
+  "test_ppl": 88.14111030504343,
+  "test_targets": 585134,
+  "test_ce_by_bucket": {
+    "frequent": {
+      "share": 0.5247071610947236,
+      "mean_ce": 2.842733383178711
+    },
+    "medium": {
+      "share": 0.31184139017729273,
+      "mean_ce": 6.231054306030273
+    },
+    "rare": {
+      "share": 0.09427242306890388,
+      "mean_ce": 9.341633796691895
+    },
+    "unk": {
+      "share": 0.021906093305123272,
+      "mean_ce": 4.122634410858154
+    },
+    "special": {
+      "share": 0.04727293235395653,
+      "mean_ce": 1.5498731136322021
+    }
+  },
+  "test_ce_general_vs_domain": {
+    "general": {
+      "share": 0.8498788311737141,
+      "mean_ce": 4.308552265167236
+    },
+    "domain": {
+      "share": 0.08094214316720615,
+      "mean_ce": 8.075077056884766
+    }
+  },
+  "parameters": {
+    "total": 9059093,
+    "trainable": 5530093,
+    "token_embedding": 3529000,
+    "positional_embedding": 0,
+    "output_layer": 4534765,
+    "core_non_embedding": 995328
+  },
+  "checkpoint_mb": 34.560851097106934,
+  "inference": {
+    "workload": "score all test targets, 128-token blocks, batch 64",
+    "repeats": 3,
+    "seconds_median": 2.8059093689998917,
+    "seconds_all": [
+      2.7840828899998087,
+      2.8059093689998917,
+      2.8219120640001165
+    ],
+    "tokens_per_second": 208536.31498745055
+  },
+  "device": "cuda",
+  "hardware": {
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "python": "3.13.15",
+    "processor": "x86_64",
+    "cpu_count": 2,
+    "torch": "2.11.0+cu130",
+    "torch_threads": 1,
+    "device": "Tesla T4"
+  },
+  "subset_max_blocks": null
+}

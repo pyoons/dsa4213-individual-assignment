@@ -1,0 +1,91 @@
+{
+  "config": {
+    "seed": 4213,
+    "processed_dir": "data/processed",
+    "out_dir": "results/generation",
+    "device": "auto",
+    "prompt_tokens": 8,
+    "samples_per_prompt": 5,
+    "max_new_tokens": 50,
+    "temperature": 1.0,
+    "top_k": 40,
+    "banned_tokens": [
+      "<pad>",
+      "<eos>"
+    ],
+    "models": {
+      "n-gram": {
+        "type": "ngram",
+        "path": "results/ngram/model.npz"
+      },
+      "RNN": {
+        "type": "neural",
+        "path": "results/part1_rnn/best.pt"
+      },
+      "LSTM": {
+        "type": "neural",
+        "path": "results/part1_lstm/best.pt"
+      },
+      "Transformer": {
+        "type": "neural",
+        "path": "results/part1_transformer/best.pt"
+      }
+    }
+  },
+  "device": "cuda",
+  "hardware": {
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "python": "3.13.15",
+    "processor": "x86_64",
+    "cpu_count": 2,
+    "torch": "2.11.0+cu130",
+    "torch_threads": 1,
+    "device": "Tesla T4"
+  },
+  "metrics": {
+    "n-gram": {
+      "distinct_1": 0.6728000000000001,
+      "distinct_2": 0.9673469387755103,
+      "repeated_trigram_rate": 0.0008333333333333333,
+      "unk_rate": 0.0208,
+      "num_rate": 0.08960000000000001,
+      "samples": 25,
+      "new_tokens": 1250,
+      "generation_seconds": 0.8122655769998346,
+      "generation_tokens_per_second": 1538.9055444365513
+    },
+    "RNN": {
+      "distinct_1": 0.7024000000000001,
+      "distinct_2": 0.942857142857143,
+      "repeated_trigram_rate": 0.0075,
+      "unk_rate": 0.022400000000000003,
+      "num_rate": 0.047200000000000006,
+      "samples": 25,
+      "new_tokens": 1250,
+      "generation_seconds": 2.6782890559998123,
+      "generation_tokens_per_second": 466.71586743028814
+    },
+    "LSTM": {
+      "distinct_1": 0.7024000000000001,
+      "distinct_2": 0.9551020408163265,
+      "repeated_trigram_rate": 0.005,
+      "unk_rate": 0.032,
+      "num_rate": 0.0368,
+      "samples": 25,
+      "new_tokens": 1250,
+      "generation_seconds": 2.334869036999862,
+      "generation_tokens_per_second": 535.3619325930844
+    },
+    "Transformer": {
+      "distinct_1": 0.7071999999999999,
+      "distinct_2": 0.9314285714285714,
+      "repeated_trigram_rate": 0.0175,
+      "unk_rate": 0.0072,
+      "num_rate": 0.0544,
+      "samples": 25,
+      "new_tokens": 1250,
+      "generation_seconds": 3.046596568000041,
+      "generation_tokens_per_second": 410.2939040663894
+    }
+  }
+}

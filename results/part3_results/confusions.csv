@@ -1,0 +1,19 @@
+Representation,True,Predicted,Count,Share of all errors
+LSTM-Random,nervous system diseases,general pathological conditions,102,0.13746630727762804
+LSTM-Random,neoplasms,general pathological conditions,97,0.1307277628032345
+LSTM-Random,cardiovascular diseases,general pathological conditions,95,0.1280323450134771
+LSTM-Skip-gram,nervous system diseases,general pathological conditions,77,0.13873873873873874
+LSTM-Skip-gram,neoplasms,general pathological conditions,65,0.11711711711711711
+LSTM-Skip-gram,cardiovascular diseases,general pathological conditions,64,0.11531531531531532
+LSTM-GloVe,nervous system diseases,general pathological conditions,69,0.11616161616161616
+LSTM-GloVe,general pathological conditions,nervous system diseases,67,0.1127946127946128
+LSTM-GloVe,general pathological conditions,neoplasms,66,0.1111111111111111
+Transformer,nervous system diseases,general pathological conditions,90,0.17374517374517376
+Transformer,cardiovascular diseases,general pathological conditions,76,0.14671814671814673
+Transformer,neoplasms,general pathological conditions,61,0.11776061776061776
+LSTM-Random (last),general pathological conditions,neoplasms,149,0.1545643153526971
+LSTM-Random (last),neoplasms,general pathological conditions,116,0.12033195020746888
+LSTM-Random (last),general pathological conditions,cardiovascular diseases,116,0.12033195020746888
+TF-IDF (no LM),nervous system diseases,general pathological conditions,60,0.16759776536312848
+TF-IDF (no LM),cardiovascular diseases,general pathological conditions,47,0.13128491620111732
+TF-IDF (no LM),neoplasms,general pathological conditions,45,0.12569832402234637

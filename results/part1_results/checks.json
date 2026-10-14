@@ -1,0 +1,95 @@
+{
+  "padding": {
+    "passed": true,
+    "loss_ignore_index": 4.411779403686523,
+    "loss_manual_nonpad_mean": 4.411778450012207,
+    "loss_after_changing_padded_logits": 4.411779403686523
+  },
+  "data_alignment": {
+    "train": true,
+    "val": true,
+    "test": true,
+    "no_abstract_in_two_splits": true,
+    "passed": true
+  },
+  "causality": {
+    "rnn": {
+      "passed": true,
+      "trials": [
+        {
+          "max_change_before_t": 0.0,
+          "max_change_at_or_after_t": 6.983747482299805
+        },
+        {
+          "max_change_before_t": 0.0,
+          "max_change_at_or_after_t": 4.1298394203186035
+        },
+        {
+          "max_change_before_t": 0.0,
+          "max_change_at_or_after_t": 6.287172317504883
+        }
+      ],
+      "perturbed_position": 64,
+      "model_source": "trained checkpoint"
+    },
+    "lstm": {
+      "passed": true,
+      "trials": [
+        {
+          "max_change_before_t": 0.0,
+          "max_change_at_or_after_t": 8.4171724319458
+        },
+        {
+          "max_change_before_t": 0.0,
+          "max_change_at_or_after_t": 3.022655487060547
+        },
+        {
+          "max_change_before_t": 0.0,
+          "max_change_at_or_after_t": 8.059364318847656
+        }
+      ],
+      "perturbed_position": 64,
+      "model_source": "trained checkpoint"
+    },
+    "transformer": {
+      "passed": true,
+      "trials": [
+        {
+          "max_change_before_t": 0.0,
+          "max_change_at_or_after_t": 10.469866752624512
+        },
+        {
+          "max_change_before_t": 0.0,
+          "max_change_at_or_after_t": 13.059871673583984
+        },
+        {
+          "max_change_before_t": 0.0,
+          "max_change_at_or_after_t": 18.00662612915039
+        }
+      ],
+      "perturbed_position": 64,
+      "model_source": "trained checkpoint"
+    },
+    "transformer_without_mask_negative_control": {
+      "expected_to_fail": true,
+      "failed_as_expected": true,
+      "passed": false,
+      "trials": [
+        {
+          "max_change_before_t": 0.40781164169311523,
+          "max_change_at_or_after_t": 10.692628860473633
+        },
+        {
+          "max_change_before_t": 0.27989625930786133,
+          "max_change_at_or_after_t": 11.95873737335205
+        },
+        {
+          "max_change_before_t": 0.23688411712646484,
+          "max_change_at_or_after_t": 18.074581146240234
+        }
+      ],
+      "perturbed_position": 64
+    }
+  },
+  "all_passed": true
+}

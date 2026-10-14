@@ -1,0 +1,76 @@
+{
+  "config": {
+    "seed": 4213,
+    "processed_dir": "data/processed",
+    "out_dir": "results/generation_part2",
+    "device": "auto",
+    "prompt_tokens": 8,
+    "samples_per_prompt": 5,
+    "max_new_tokens": 50,
+    "temperature": 1.0,
+    "top_k": 40,
+    "banned_tokens": [
+      "<pad>",
+      "<eos>"
+    ],
+    "models": {
+      "Random (trainable)": {
+        "type": "neural",
+        "path": "results/part1_lstm/best.pt"
+      },
+      "Skip-gram (frozen)": {
+        "type": "neural",
+        "path": "results/part2_lstm_skipgram/best.pt"
+      },
+      "GloVe (frozen)": {
+        "type": "neural",
+        "path": "results/part2_lstm_glove/best.pt"
+      }
+    }
+  },
+  "device": "cuda",
+  "hardware": {
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "python": "3.13.15",
+    "processor": "x86_64",
+    "cpu_count": 2,
+    "torch": "2.11.0+cu130",
+    "torch_threads": 1,
+    "device": "Tesla T4"
+  },
+  "metrics": {
+    "Random (trainable)": {
+      "distinct_1": 0.7167999999999999,
+      "distinct_2": 0.9559183673469388,
+      "repeated_trigram_rate": 0.0075,
+      "unk_rate": 0.028800000000000003,
+      "num_rate": 0.062400000000000004,
+      "samples": 25,
+      "new_tokens": 1250,
+      "generation_seconds": 2.429627083000014,
+      "generation_tokens_per_second": 514.4822465744603
+    },
+    "Skip-gram (frozen)": {
+      "distinct_1": 0.6999999999999998,
+      "distinct_2": 0.9510204081632654,
+      "repeated_trigram_rate": 0.009166666666666667,
+      "unk_rate": 0.02,
+      "num_rate": 0.06480000000000001,
+      "samples": 25,
+      "new_tokens": 1250,
+      "generation_seconds": 2.3857704560000457,
+      "generation_tokens_per_second": 523.9397599447749
+    },
+    "GloVe (frozen)": {
+      "distinct_1": 0.688,
+      "distinct_2": 0.9624489795918366,
+      "repeated_trigram_rate": 0.0016666666666666666,
+      "unk_rate": 0.0256,
+      "num_rate": 0.054400000000000004,
+      "samples": 25,
+      "new_tokens": 1250,
+      "generation_seconds": 2.3495153619996927,
+      "generation_tokens_per_second": 532.0246124869404
+    }
+  }
+}

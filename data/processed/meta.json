@@ -1,0 +1,125 @@
+{
+  "config": {
+    "seed": 4213,
+    "raw_dir": "data/raw",
+    "processed_dir": "data/processed",
+    "glove_path": "data/glove/glove-wiki-gigaword-200.gz",
+    "val_fraction": 0.1,
+    "min_labelset_count": 30,
+    "lowercase": true,
+    "hyphen_mode": "split",
+    "replace_numbers": true,
+    "min_freq": 3,
+    "block_len": 128,
+    "buckets": {
+      "frequent": 1000,
+      "medium": 50
+    },
+    "glove_general_topk": 50000
+  },
+  "split_stats": {
+    "raw_train_rows": 11550,
+    "raw_test_rows": 2888,
+    "unique_train_abstracts": 9445,
+    "unique_test_abstracts": 2770,
+    "train_abstracts_also_in_test_removed": 988,
+    "unique_abstracts_total": 11227,
+    "train_abstracts": 7611,
+    "train_single_label_abstracts": 5946,
+    "val_abstracts": 846,
+    "val_single_label_abstracts": 661,
+    "test_abstracts": 2770,
+    "test_single_label_abstracts": 1691,
+    "label_names": {
+      "1": "neoplasms",
+      "2": "digestive system diseases",
+      "3": "nervous system diseases",
+      "4": "cardiovascular diseases",
+      "5": "general pathological conditions"
+    }
+  },
+  "splits": {
+    "train": {
+      "abstracts": 7611,
+      "tokens_incl_eos": 1610916,
+      "blocks": 12586,
+      "evaluated_targets": 1610915,
+      "unk_rate": 0.010886973622460761,
+      "num_rate": 0.042360992131184994,
+      "mean_tokens_per_abstract": 210.6562869530942
+    },
+    "val": {
+      "abstracts": 846,
+      "tokens_incl_eos": 171326,
+      "blocks": 1339,
+      "evaluated_targets": 171325,
+      "unk_rate": 0.022857009443983983,
+      "num_rate": 0.04036748654611676,
+      "mean_tokens_per_abstract": 201.51300236406618
+    },
+    "test": {
+      "abstracts": 2770,
+      "tokens_incl_eos": 585135,
+      "blocks": 4572,
+      "evaluated_targets": 585134,
+      "unk_rate": 0.02190605586744939,
+      "num_rate": 0.04253890127919198,
+      "mean_tokens_per_abstract": 210.24007220216606
+    }
+  },
+  "vocab_size": 17645,
+  "special_tokens": [
+    "<pad>",
+    "<unk>",
+    "<eos>",
+    "<num>"
+  ],
+  "bucket_names": [
+    "frequent",
+    "medium",
+    "rare",
+    "unk",
+    "special"
+  ],
+  "bucket_types": {
+    "frequent": 164,
+    "medium": 2771,
+    "rare": 14706,
+    "unk": 1,
+    "special": 3
+  },
+  "test_target_share_by_bucket": {
+    "frequent": 0.5247071610947236,
+    "medium": 0.31184139017729273,
+    "rare": 0.09427242306890388,
+    "unk": 0.021906093305123272,
+    "special": 0.04727293235395653
+  },
+  "test_target_share_general": 0.8498788311737141,
+  "glove_coverage": {
+    "overall": {
+      "types": 17641,
+      "tokens": 1517527,
+      "type_coverage": 0.7948528994954934,
+      "token_coverage": 0.9814401984281005
+    },
+    "frequent": {
+      "types": 164,
+      "tokens": 842804,
+      "type_coverage": 1.0,
+      "token_coverage": 1.0
+    },
+    "medium": {
+      "types": 2771,
+      "tokens": 506448,
+      "type_coverage": 0.986647419704078,
+      "token_coverage": 0.9940961362272138
+    },
+    "rare": {
+      "types": 14706,
+      "tokens": 168275,
+      "type_coverage": 0.7564259485924113,
+      "token_coverage": 0.8503937007874016
+    }
+  }
+}

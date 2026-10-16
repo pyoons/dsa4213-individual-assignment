@@ -33,9 +33,9 @@ dsa4213-individual-assignment/
 │   ├── part2_lstm_glove.yaml     # Part II LSTM with frozen GloVe table
 │   ├── part2_generate.yaml       # Part II matched-decoding generation
 │   └── part3.yaml                # Part III representations, pooling, classifier
-├── data/                         # not committed (see Data)
-│   ├── raw/                      # Medical Abstracts CSVs (downloaded)
-│   ├── glove/                    # GloVe 6B 200d (downloaded)
+├── data/                         # large files (*.gz, *.kv, *.npy) stored with Git LFS
+│   ├── raw/                      # Medical Abstracts CSVs
+│   ├── glove/                    # GloVe 6B 200d
 │   ├── processed/                # splits, vocabulary, token blocks (generated)
 │   └── embeddings/               # Skip-gram and GloVe embedding matrices (generated)
 ├── notebooks/                    # Google Colab notebooks used to produce the reported results
@@ -78,8 +78,16 @@ The scripts write each run to `results/<run_name>/` (for example `results/part1_
 | Medical Abstracts TC corpus | <https://github.com/sebischair/Medical-Abstracts-TC-Corpus> (same data as `TimSchopf/medical_abstracts` on Hugging Face) | CC BY-SA 3.0; Schopf, Braun & Matthes (2023), NLPIR '22 |
 | GloVe 6B, 200d (Wikipedia 2014 + Gigaword 5) | gensim-data release `glove-wiki-gigaword-200` (identical vectors to Stanford `glove.6B.200d.txt`) | Pennington, Socher & Manning (2014) |
 
+All data files, including the raw corpus, GloVe and the generated embedding matrices, are committed to this repository. Large files (`*.gz`, `*.kv`, `*.npy`) are stored with [Git LFS](https://git-lfs.com/), as set in `.gitattributes`. Install Git LFS before cloning, otherwise these files download as small text pointers instead of the real data:
 
-Download guide:
+```bash
+git lfs install
+git clone https://github.com/pyoons/dsa4213-individual-assignment.git
+cd dsa4213-individual-assignment
+git lfs pull      # only needed if the repository was cloned before Git LFS was installed
+```
+
+Both datasets are redistributed under their original terms and must be cited as above. To download them from the original sources instead:
 
 ```bash
 mkdir -p data/raw data/glove
@@ -87,6 +95,14 @@ git clone --depth 1 https://github.com/sebischair/Medical-Abstracts-TC-Corpus.gi
 cp /tmp/matc/medical_tc_*.csv data/raw/
 curl -L -o data/glove/glove-wiki-gigaword-200.gz \
   https://github.com/RaRe-Technologies/gensim-data/releases/download/glove-wiki-gigaword-200/glove-wiki-gigaword-200.gz
+```
+
+### Install and prepare the data
+
+```bash
+pip install -r requirements.txt
+python -m src.data_preparation --config configs/data.yaml --coverage-check   # -> results/coverage_check.json
+python -m src.data_preparation --config configs/data.yaml                    # -> data/processed/
 ```
 
 ## Part I: Language model training and comparison
